@@ -9,12 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 
 @Entity
-@Getter@Setter
+@Getter
+@Setter
 public class Delivery {
 
     @Id @GeneratedValue
