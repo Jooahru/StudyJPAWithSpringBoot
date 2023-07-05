@@ -21,3 +21,6 @@
  * 준영속성 엔티티를 수정 하는 2가지 방법
    * 변경 감지 기능 사용 -선택해서 변경가능
    * 병합('merge')사용 - 모든 속성을 다 변경시킴(null도 null로 업데이트)
+   
+## API와 JPA 설계시
+ * Entity를 RequestParam으로 사용하면 추후에 문제가 발생한다 => requestParam은 DTO를 만들어서 사용
