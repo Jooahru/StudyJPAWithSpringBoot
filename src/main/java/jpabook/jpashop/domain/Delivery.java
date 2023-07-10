@@ -10,25 +10,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
-
 
 @Entity
 @Getter
 @Setter
 public class Delivery {
 
-    @Id @GeneratedValue
-    @Column(name="delivery_id")
-    private Long id;
+	@Id
+	@GeneratedValue
+	@Column(name = "delivery_id")
+	private Long id;
 
-    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
-    private Order order;
+	@JsonIgnore
+	@OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
+	private Order order;
 
-    @Embedded
-    private Address address;
+	@Embedded
+	private Address address;
 
-    @Enumerated(EnumType.STRING)
-    private DeliveryStatus status; //READY, COMP
+	@Enumerated(EnumType.STRING)
+	private DeliveryStatus status; // READY, COMP
 }
