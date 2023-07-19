@@ -70,14 +70,16 @@ public class OrderApiController {
 	public List<OrderQueryDto> ordersV6() {
 		List<OrderFlatDto> flats = orderQueryRepository.findAllByDto_flat();
 
-		return flats.stream().collect(groupingBy(
+		return flats.stream().collect(Collectors.groupingBy(
 				o -> new OrderQueryDto(o.getOrderId(), o.getName(), o.getOrderDate(), o.getOrderStatus(),
 						o.getAddress()),
-				mapping(o -> new OrderItemQueryDto(o.getOrderId(), o.getItemName(), o.getOrderPrice(), o.getCount()),
-						toList())))
-				.entrySet().stream().map(e -> new OrderQueryDto(e.getKey().getOrderId(), e.getKey().getName(),
-						e.getKey().getOrderDate(), e.getKey().getOrderStatus(), e.getKey().getAddress(), e.getValue()))
-				.collect(toList());
+				Collectors.mapping(
+						o -> new OrderItemQueryDto(o.getOrderId(), o.getItemName(), o.getOrderPrice(), o.getCount()),
+						Collectors.toList())))
+				.entrySet().stream()
+				.map(e -> new OrderQueryDto(e.getKey().getOrderId(), e.getKey().getName(), e.getKey().getOrderDate(),
+						e.getKey().getOrderStatus(), e.getKey().getAddress(), e.getValue()))
+				.collect(Collectors.toList());
 	}
 
 	@GetMapping("/api/v3.1/orders")
