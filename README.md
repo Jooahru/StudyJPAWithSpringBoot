@@ -65,3 +65,9 @@
  2. 엔티티 조회 방식으로 해결이 안되면 DTO 조회 방식 사용
  3. DTO 조회 방식으로 해결이 안되면 NativeSQL or 스프링 JdbcTemplate
  
+## OSIV와 성능 최적화
+ * Open Session In View: 하이버네이트
+ * Open EntityManager In View:JPA
+ * spring.jpa.open-in-view : true(default)
+     * true면 API 요청이 끝날때까지/화면단에 다 부려질때까지 data 영속성이 살아 있음 
+ 
