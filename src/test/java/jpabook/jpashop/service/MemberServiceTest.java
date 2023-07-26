@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.repository.MemberRepository;
+import jpabook.jpashop.repository.MemberRepositoryOld;
 
 @RunWith(SpringRunner.class) //Junit실행시 Spring과 함께 실행
 @SpringBootTest(properties = {"spring.config.location=classpath:application-test.yml"}) // 테스트 설정용 yml 사용하고싶을때
@@ -22,7 +22,7 @@ public class MemberServiceTest {
 	@Autowired
 	MemberService memberService;
 	@Autowired
-	MemberRepository memberRepository;
+	MemberRepositoryOld memberRepository;
 
 	@Test
 	@Rollback(false)
